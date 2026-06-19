@@ -1,0 +1,19 @@
+# 시크릿
+.env
+
+# 파이썬 가상환경 / 캐시
+venv/
+__pycache__/
+*.pyc
+
+# 로컬 작업 잔재 (Simli 페이스 소스, TTS 테스트, 옛 Daily UI) — 루트 한정
+/face_*.png
+/*.mp3
+/*.bin
+/client.html
+/live.html
+/embed.html
+/index.html
+
+# OS
+.DS_Store

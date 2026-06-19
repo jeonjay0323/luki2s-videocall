@@ -1,0 +1,6 @@
+# LUKI2DS 영상통화 봇 의존성
+# 설치: pip install -r requirements.txt
+pipecat-ai[silero,google,elevenlabs,simli,openai,webrtc]==1.4.0
+pipecat-ai-prebuilt==1.0.2
+python-dotenv==1.2.2
+loguru==0.7.3
