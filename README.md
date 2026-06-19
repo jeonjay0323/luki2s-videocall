@@ -38,12 +38,24 @@ GRPC_DNS_RESOLVER=native ./venv/bin/python bot.py --transport webrtc
 
 macOS의 `/etc/resolv.conf`에 IPv6 링크로컬 네임서버만 있는 환경에서는 gRPC 기본 리졸버(c-ares)가 DNS를 못 풀어 Google STT가 실패한다. native(getaddrinfo) 리졸버로 강제하면 해결된다.
 
+## 브랜드 사이트 (`site/`)
+
+LUKI2DS 브랜드북 데스크톱 웹사이트 (피그마 → 단일 HTML). 정적 파일이라 그냥 열면 된다.
+
+- `site/index.html` — 브랜드 가이드(01~08: Intro·Traits·Logo·Color·Typo·Application·Service·Plan)
+- `site/demo.html` — 워프 로딩 진입 화면 → `site/call.html` 영상통화 화면(피그마 `videocall` 목업)
+
+```bash
+open site/index.html        # 브랜드북
+```
+
 ## 구조
 
 ```
 bot.py            파이프라인 + /luki 정적 서빙
-web/index.html    영상통화 UI (피그마 videocall 디자인 + pipecat JS SDK)
+web/index.html    영상통화 UI (피그마 videocall 디자인 + pipecat JS SDK, 봇 연동)
 web/assets/       카드 이미지·아이콘
+site/             LUKI2DS 브랜드북 사이트 (정적)
 requirements.txt
 .env.example
 ```

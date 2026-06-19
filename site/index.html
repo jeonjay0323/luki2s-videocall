@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUKI2DS — Brand Guideline</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --ink:#040404;
+    --muted:#626262;
+    --line:#c8c8c8;
+    --grey-bg:#e8ebef;
+    --dark:#323232;
+    font-family:"RixAirSans","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased;}
+  img{display:block;}
+  a{color:inherit;text-decoration:none;}
+  p{font-weight:400;}
+
+  /* ---------- layout ---------- */
+  .layout{display:flex;width:100%;align-items:flex-start;}
+
+  /* ---------- navigation ---------- */
+  .nav{
+    width:250px;flex:0 0 250px;
+    position:sticky;top:0;height:100vh;
+    background:#fff;
+    display:flex;flex-direction:column;justify-content:space-between;
+    padding-bottom:30px;
+  }
+  .nav-top{display:flex;flex-direction:column;gap:24px;}
+  .nav-logo{
+    border-bottom:1px solid var(--line);
+    padding:30px 20px 30px 32px;
+  }
+  .nav-logo img{width:110px;height:31px;}
+  .contents{
+    border-bottom:1px solid var(--line);
+    padding:0 20px 30px 32px;
+    display:flex;flex-direction:column;gap:10px;
+    list-style:none;
+  }
+  .contents a{
+    display:flex;align-items:center;gap:4px;
+    font-size:15px;font-weight:500;letter-spacing:-0.3px;line-height:1.2;
+  }
+  .contents .label{color:var(--ink);text-transform:uppercase;}
+  .contents .num{color:var(--muted);}
+  .contact{
+    display:flex;gap:12px;align-items:center;
+    padding:0 20px 0 32px;
+  }
+  .contact a{display:flex;align-items:center;}
+  .contact .txt{font-size:14px;font-weight:400;letter-spacing:-0.14px;line-height:1.6;text-transform:uppercase;color:#000;}
+  .contact .arr{width:12px;height:12px;}
+
+  /* ---------- main ---------- */
+  .main{flex:1 1 auto;min-width:0;border-left:1px solid var(--line);}
+
+  /* hero */
+  .hero{position:relative;width:100%;height:540px;background:#000;overflow:hidden;}
+  .hero .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero .wordmark{position:absolute;bottom:18px;left:calc(50% - 1px);transform:translateX(-50%);width:1799px;height:504px;display:block;}
+  .hero .wordmark .flick{animation-name:flicker;animation-iteration-count:infinite;animation-timing-function:linear;will-change:opacity;}
+  @keyframes flicker{
+    0%,37%,100%{opacity:1;}
+    39%{opacity:0.1;}
+    41%{opacity:1;}
+    43%{opacity:0.15;}
+    45%{opacity:1;}
+    70%{opacity:1;}
+    72%{opacity:0;}
+    75%{opacity:1;}
+  }
+  @media (prefers-reduced-motion:reduce){.hero .wordmark .flick{animation:none;}}
+
+  /* generic section */
+  .section{padding:60px 32px 120px;border-top:1px solid var(--line);}
+  .section.no-top{border-top:0;}
+  .sec-head{display:flex;gap:40px;align-items:flex-start;}
+  .sec-title{
+    flex:1 0 0;min-width:0;
+    display:flex;gap:4px;align-items:center;
+    font-size:60px;font-weight:500;letter-spacing:-0.6px;line-height:1.1;white-space:nowrap;
+  }
+  .sec-title .num{color:var(--muted);}
+  .sec-title .name{color:var(--ink);text-transform:uppercase;}
+  .sec-body{flex:1 0 0;min-width:0;}
+  .body-text{color:var(--muted);font-size:16px;letter-spacing:-0.16px;line-height:1.6;}
+  .sub-title{color:var(--ink);font-size:22px;font-weight:600;letter-spacing:-0.22px;line-height:1.2;text-transform:uppercase;}
+
+  /* summary */
+  .summary{display:flex;gap:40px;align-items:center;padding:60px 32px 120px;}
+  .summary h1{flex:1 0 0;min-width:0;font-size:60px;font-weight:500;letter-spacing:-0.6px;line-height:1.2;text-transform:uppercase;color:var(--ink);}
+  .summary .desc{flex:1 0 0;min-width:0;color:var(--muted);font-size:18px;letter-spacing:-0.18px;line-height:1.6;}
+
+  /* table of contents */
+  .toc{display:flex;gap:40px;align-items:flex-start;font-size:30px;font-weight:500;letter-spacing:-0.6px;line-height:1.2;text-transform:uppercase;}
+  .toc .toc-title{flex:1 0 0;min-width:0;color:var(--ink);}
+  .toc-list{flex:1 0 0;min-width:0;list-style:none;display:flex;flex-direction:column;gap:10px;white-space:nowrap;}
+  .toc-list li{display:flex;gap:8px;align-items:flex-start;}
+  .toc-list .n{color:var(--muted);}
+  .toc-list .t{color:var(--ink);}
+
+  /* demo cta band */
+  .demo{background:#000;border-top:1px solid var(--line);padding:120px 32px;display:flex;align-items:center;justify-content:center;text-decoration:none;cursor:pointer;transition:background .2s ease;}
+  .demo:hover{background:#0a0612;}
+  .demo-inner{display:flex;flex-direction:column;gap:30px;align-items:center;justify-content:center;padding:20px;}
+  .demo-pill{background:rgba(255,255,255,0.2);padding:8px 24px;border-radius:999px;font-size:36px;font-weight:700;line-height:1.4;color:#fff;text-transform:uppercase;}
+  .demo-text{font-family:"Google Sans Code",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:32px;letter-spacing:-0.32px;line-height:1.2;color:#fff;text-transform:uppercase;text-align:center;min-height:1.2em;}
+  .demo-cursor{display:inline-block;margin-left:2px;animation:demoBlink 1s step-end infinite;}
+  @keyframes demoBlink{50%{opacity:0;}}
+
+  /* intro */
+  .intro .sec-body{display:flex;flex-direction:column;gap:32px;}
+  .intro-big{
+    height:480px;width:463px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    font-size:64px;font-weight:500;letter-spacing:-0.64px;line-height:1.2;
+    color:#000;text-transform:uppercase;white-space:nowrap;
+  }
+
+  /* traits */
+  .traits .sec-body{align-self:center;}
+  .traits-img{
+    background:var(--grey-bg);
+    padding:120px 32px;
+    display:flex;
+  }
+  .traits-cards{display:flex;gap:16px;height:320px;width:100%;}
+  .traits-cards .card{flex:1 0 0;min-width:0;height:100%;background:#d9d9d9;border-radius:8px;}
+  .in-short{display:flex;gap:40px;align-items:flex-start;}
+  .in-short .title{flex:1 0 0;min-width:0;}
+  .in-short .rows{flex:1 0 0;min-width:0;display:flex;flex-direction:column;gap:40px;}
+  .in-short .row{display:flex;flex-direction:column;gap:4px;}
+  .in-short .row .h{font-size:16px;font-weight:700;letter-spacing:-0.16px;line-height:1.6;color:var(--ink);}
+  .in-short .row .d{font-size:16px;letter-spacing:-0.16px;line-height:1.6;color:var(--muted);}
+
+  /* logo grid */
+  .logo-img{width:100%;aspect-ratio:966/500;background:var(--grey-bg);display:flex;align-items:center;justify-content:center;}
+  .logo-img img{width:80%;max-width:780px;height:auto;display:block;}
+
+  /* color */
+  .palette{display:flex;flex-direction:column;gap:64px;}
+  .palette .group{display:flex;flex-direction:column;gap:30px;}
+  .swatches{display:flex;gap:16px;}
+  .swatch{display:flex;flex-direction:column;gap:10px;flex:1 1 0;min-width:0;}
+  .swatch .chip{height:275.5px;width:100%;}
+  .swatch .meta{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:500;letter-spacing:-0.13px;line-height:1.2;text-transform:uppercase;color:var(--ink);}
+  .gradients{display:flex;flex-direction:column;gap:32px;}
+  .grad-row{display:flex;gap:32px;}
+  .grad{flex:1 0 0;min-width:0;display:flex;flex-direction:column;gap:10px;}
+  .grad img{width:100%;aspect-ratio:435/292.48;object-fit:cover;}
+  .grad .cap{font-size:13px;font-weight:500;letter-spacing:-0.13px;line-height:1.2;text-transform:uppercase;color:var(--ink);}
+
+  /* typo / glyphs */
+  .typo .sec-body{height:auto;}
+  .typo-text{height:104px;}
+  .glyphs{display:flex;flex-direction:column;width:100%;}
+  .glyph-row{display:flex;width:100%;}
+  .glyph-cell{
+    flex:1 0 0;min-width:0;height:193px;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    padding:0 16px;overflow:hidden;
+  }
+  .glyph-inner{
+    height:193px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    padding:54px 0 16px;width:161.4px;
+  }
+  .glyph-inner img{width:60px;height:60px;object-fit:contain;}
+  .glyph-inner .lab{display:flex;justify-content:space-between;width:100%;font-size:12px;font-weight:500;letter-spacing:-0.24px;line-height:1.2;text-transform:uppercase;color:var(--muted);}
+
+  /* application — watch conveyor (회전 초밥) */
+  .watch-stage{width:100%;aspect-ratio:966/500;background:#fff;position:relative;overflow:hidden;}
+  .belt-mask{position:absolute;inset:0;overflow:hidden;z-index:1;
+    -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 20%,#000 80%,transparent 100%);
+    mask-image:linear-gradient(to right,transparent 0%,#000 20%,#000 80%,transparent 100%);}
+  .watch-stage::before,.watch-stage::after{content:"";position:absolute;top:0;bottom:0;width:24%;z-index:1;pointer-events:none;
+    -webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);}
+  .watch-stage::before{left:0;-webkit-mask-image:linear-gradient(to right,#000 0%,transparent 100%);mask-image:linear-gradient(to right,#000 0%,transparent 100%);}
+  .watch-stage::after{right:0;-webkit-mask-image:linear-gradient(to left,#000 0%,transparent 100%);mask-image:linear-gradient(to left,#000 0%,transparent 100%);}
+  .watch-belt{position:absolute;top:50%;left:50%;display:flex;gap:16px;z-index:1;
+    transform:translate(-1169px,-50%);animation:watchSnap 9s cubic-bezier(.5,1.4,.4,1) infinite;}
+  .wface{flex:0 0 auto;width:198px;height:242px;border-radius:42px;overflow:hidden;background:#909090;}
+  .wface img{width:100%;height:100%;object-fit:cover;display:block;}
+  .watch-device{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:270px;height:430px;z-index:2;pointer-events:none;}
+  .watch-device img{width:100%;height:100%;display:block;}
+  /* 각 페이스가 중앙에 멈춤 → 한 칸(214px) 스냅 이동 반복 */
+  @keyframes watchSnap{
+    0%,14%  {transform:translate(-1169px,-50%);}
+    20%,34% {transform:translate(-1383px,-50%);}
+    40%,54% {transform:translate(-1597px,-50%);}
+    60%,74% {transform:translate(-1811px,-50%);}
+    80%,94% {transform:translate(-2025px,-50%);}
+    100%    {transform:translate(-2239px,-50%);}
+  }
+  @media (prefers-reduced-motion:reduce){.watch-belt{animation:none;}}
+
+  /* service */
+  .service{background:var(--dark);}
+  .service .sec-title .num{color:#9c9c9c;}
+  .service .sec-title .name{color:#fff;}
+  .service-row{display:flex;gap:40px;align-items:center;width:100%;
+    overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;
+    scroll-snap-type:x mandatory;
+    -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 16%,#000 84%,transparent 100%);
+    mask-image:linear-gradient(to right,transparent 0%,#000 16%,#000 84%,transparent 100%);}
+  .service-row::-webkit-scrollbar{display:none;}
+  .service-row .ui{
+    flex:0 0 auto;width:402px;height:874px;border-radius:8px;
+    box-shadow:0 20px 20px 0 rgba(0,0,0,0.25);overflow:hidden;
+    scroll-snap-align:center;
+  }
+  .service-row .ui img{width:100%;height:100%;object-fit:contain;}
+
+  /* plan */
+  .plan-wrap{display:flex;flex-direction:column;gap:12px;width:100%;overflow:hidden;padding:1px 0;}
+  .plan-months{display:flex;align-items:center;width:100%;}
+  .plan-months .m{flex:1 0 0;min-width:0;background:#fff;display:flex;align-items:center;justify-content:center;padding:16px 24px;font-size:16px;font-weight:500;letter-spacing:-0.16px;line-height:1.6;text-transform:uppercase;color:#000;}
+  .rm-bars{position:relative;width:100%;height:360px;}
+  .rm-bar{position:absolute;padding:10px;font-size:16px;font-weight:400;letter-spacing:-0.32px;line-height:1.2;text-transform:uppercase;color:var(--ink);white-space:nowrap;}
+
+  /* footer */
+  .footer{padding:120px 0 0;display:flex;flex-direction:column;gap:31px;}
+  .footer-top{display:flex;align-items:flex-end;justify-content:space-between;padding:0 32px;}
+  .footer-top h2{font-size:60px;font-weight:500;letter-spacing:-0.6px;line-height:1.2;text-transform:uppercase;color:var(--ink);}
+  .footer-links{display:flex;gap:51px;align-items:flex-start;}
+  .footer-links a,.footer-links button{font-family:inherit;font-size:15px;font-weight:500;letter-spacing:-0.3px;line-height:1.2;text-transform:uppercase;color:var(--ink);background:none;border:0;padding:0;cursor:pointer;}
+  .footer-legal{border-top:1px solid var(--line);padding:40px 32px 30px;display:flex;align-items:center;gap:16px;font-size:14px;font-weight:500;letter-spacing:-0.14px;line-height:1.4;text-transform:uppercase;color:var(--ink);}
+  .footer-legal .left{flex:1 0 0;min-width:0;display:flex;gap:16px;align-items:center;}
+
+  /* 스크롤 리빌 — JS가 body.has-reveal 추가했을 때만 숨김(노JS 안전) */
+  body.has-reveal .reveal{opacity:0;transform:translateY(34px);
+    transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);will-change:opacity,transform;}
+  body.has-reveal .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    body.has-reveal .reveal{opacity:1;transform:none;transition:none;}
+  }
+</style>
+</head>
+<body>
+  <div class="layout">
+
+    <!-- ============ NAVIGATION ============ -->
+    <nav class="nav">
+      <div class="nav-top">
+        <div class="nav-logo"><img src="assets/nav-logo.svg" alt="LUKI2DS"></div>
+        <ol class="contents">
+          <li><a href="#intro"><span class="label">루키즈 소개</span><span class="num">01</span></a></li>
+          <li><a href="#traits"><span class="label">Traits</span><span class="num">02</span></a></li>
+          <li><a href="#logo"><span class="label">logo</span><span class="num">03</span></a></li>
+          <li><a href="#color"><span class="label">Color</span><span class="num">04</span></a></li>
+          <li><a href="#typo"><span class="label">Typo</span><span class="num">05</span></a></li>
+          <li><a href="#application"><span class="label">Application</span><span class="num">06</span></a></li>
+          <li><a href="#service"><span class="label">service</span><span class="num">07</span></a></li>
+          <li><a href="#plan"><span class="label">plan</span><span class="num">08</span></a></li>
+        </ol>
+      </div>
+      <div class="contact">
+        <a href="#"><span class="txt">git</span><img class="arr" src="assets/icon-arrow.svg" alt=""></a>
+        <a href="#"><span class="txt">figma</span><img class="arr" src="assets/icon-arrow.svg" alt=""></a>
+        <a href="#"><span class="txt">illust</span><img class="arr" src="assets/icon-arrow.svg" alt=""></a>
+      </div>
+    </nav>
+
+    <!-- ============ MAIN ============ -->
+    <main class="main">
+
+      <!-- HERO -->
+      <header class="hero">
+        <video class="photo" src="assets/hero.mp4" autoplay muted loop playsinline poster="assets/hero-photo.png"></video>
+        <svg class="wordmark" role="img" aria-label="LUKI2S" viewBox="0 0 1799 504" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g fill="#fff" stroke="#fff" stroke-miterlimit="10">
+            <path d="M675.209 202.017H563.064V501.917H675.209V202.017Z"/>
+            <path d="M675.209 2.08264H563.064V152.033H675.209V2.08264Z"/>
+            <path d="M1123.79 2.08264H1011.65V501.917H1123.79V2.08264Z"/>
+            <path d="M394.845 2.08264H338.773V202.017H394.845V2.08264Z"/>
+            <path class="flick" style="animation-duration:2.1s;animation-delay:0s" d="M394.845 252H338.773V451.934H394.845V252Z"/>
+            <path d="M787.355 2.08264H731.282V501.917H787.355V2.08264Z"/>
+            <path d="M563.064 451.934H394.845V501.917H563.064V451.934Z"/>
+            <path class="flick" style="animation-duration:3.3s;animation-delay:.6s" d="M843.427 202.017H731.282V301.983H843.427V202.017Z"/>
+            <path d="M899.5 301.983H843.427V401.95H899.5V301.983Z"/>
+            <path d="M955.573 2.08264H899.5V102.05H955.573V2.08264Z"/>
+            <path class="flick" style="animation-duration:1.7s;animation-delay:1.1s" d="M1235.94 52.0661H1179.86V102.05H1235.94V52.0661Z"/>
+            <path class="flick" style="animation-duration:2.8s;animation-delay:.35s" d="M1796.66 52.0661H1740.59V102.05H1796.66V52.0661Z"/>
+            <path d="M1235.94 501.917H1179.86L1292.01 252H1348.08L1235.94 501.917Z"/>
+            <path d="M1460.23 52.0661H1404.15V202.017H1460.23V52.0661Z"/>
+            <path class="flick" style="animation-duration:2.4s;animation-delay:1.9s" d="M1572.37 52.0661H1516.3V202.017H1572.37V52.0661Z"/>
+            <path d="M1404.15 2.08264H1235.94V52.0661H1404.15V2.08264Z"/>
+            <path d="M1740.59 2.08264H1572.37V52.0661H1740.59V2.08264Z"/>
+            <path class="flick" style="animation-duration:2.3s;animation-delay:.9s" d="M1740.59 451.934H1572.37V501.917H1740.59V451.934Z"/>
+            <path d="M1516.3 451.934H1348.08V501.917H1516.3V451.934Z"/>
+            <path d="M955.573 401.95H899.5V501.917H955.573V401.95Z"/>
+            <path d="M114.482 2.08264H2.33636V501.917H114.482V2.08264Z"/>
+            <path d="M170.555 451.934H114.482V501.917H170.555V451.934Z"/>
+            <path class="flick" style="animation-duration:3.1s;animation-delay:1.5s" d="M282.7 451.934H226.627V501.917H282.7V451.934Z"/>
+            <path d="M1796.66 301.983H1740.59V451.934H1796.66V301.983Z"/>
+            <path class="flick" style="animation-duration:1.9s;animation-delay:.2s" d="M1740.59 252H1684.52V301.983H1740.59V252Z"/>
+          </g>
+        </svg>
+      </header>
+
+      <!-- SUMMARY -->
+      <section class="summary">
+        <h1>luki2ds</h1>
+        <div class="desc">
+          <p>내가 만들고 함께 성장하며 서사를 쌓아가는</p>
+          <p>아이돌 메이커 서비스</p>
+        </div>
+      </section>
+
+      <!-- TABLE OF CONTENTS -->
+      <section class="section toc" aria-label="Table of contents">
+        <h2 class="toc-title">Contents</h2>
+        <ol class="toc-list">
+          <li><span class="n">01</span><span class="t">루키즈 소개</span></li>
+          <li><span class="n">02</span><span class="t">Traits</span></li>
+          <li><span class="n">03</span><span class="t">Glyphs</span></li>
+          <li><span class="n">04</span><span class="t">Color</span></li>
+          <li><span class="n">05</span><span class="t">Typography</span></li>
+          <li><span class="n">06</span><span class="t">APPlication</span></li>
+          <li><span class="n">07</span><span class="t">service</span></li>
+          <li><span class="n">07</span><span class="t">plan</span></li>
+        </ol>
+      </section>
+
+      <!-- 01 INTRO -->
+      <section class="section intro" id="intro">
+        <div class="sec-head">
+          <h2 class="sec-title"><span class="num">01</span><span class="name">Intro</span></h2>
+          <div class="sec-body">
+            <p class="body-text">덕질을 하면서 이번 앨범 컨셉은 이랬으면 좋겠다. 하고 생각한적이 있는데요. 내 맘대로 되지 않죠! 그리고 버블, 위버스 기다리기도 지칠 때가 있고요. 최애가 사고라도 치면 현타가 아주 쎄게 오죠. 그래서 만들게 됐습니다.</p>
+            <div class="intro-big">
+              <div>
+                <p>젭알 맛있는</p>
+                <p>컨셉</p>
+                <p>점...</p>
+              </div>
+              <div>
+                <p>생태로 돌아와줘</p>
+              </div>
+            </div>
+            <p class="body-text">운명적으로 아이돌 연습생을 만나고 실시간 소통하고 가상일지라도 살아움직이는. 그리고 자주 올려주는 피드와 내가 만든 그룹의 자컨까지! 케이팝의 독소 문화를 제대로 즐길 수 있는 서비스!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEMO CTA BAND -->
+      <a class="demo" href="demo.html">
+        <div class="demo-inner">
+          <div class="demo-pill" id="demoPill">\^_^/</div>
+          <p class="demo-text" data-text="입짱하기! enter, 나를 여길 클릭해! 언제까지 기다려야할까요? 루키즈들은 접속중이에요!7"><span id="demoTyped"></span><span class="demo-cursor" aria-hidden="true">_</span></p>
+        </div>
+      </a>
+
+      <!-- 02 TRAITS -->
+      <section class="section traits" id="traits">
+        <div class="sec-head" style="padding-bottom:40px;">
+          <h2 class="sec-title"><span class="num">02</span><span class="name">Traits</span></h2>
+          <div class="sec-body">
+            <p class="body-text">다른 AI 캐릭터 서비스와 다른 점은 K-POP 덕질 문화, 아이돌 문화의 문법을 적용한 것이 가장 크고 특이한 것은 내가 만든 가상의 인물이 실제 살아있는 것같이 피드도 올리고 영상도 올린다는 점이에요. 또한 함께 대화하고 내가 관계성을 지정해주면서 그들의 서사를 직접 만들어가요.</p>
+          </div>
+        </div>
+        <div class="traits-img">
+          <div class="traits-cards">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+          </div>
+        </div>
+        <div class="in-short" style="margin-top:40px;">
+          <div class="title"><h3 class="sub-title">In Short</h3></div>
+          <div class="rows">
+            <div class="row">
+              <p class="h">AI이기에 가능한 이색적 아이돌 설계</p>
+              <p class="d">수인 / 엘프 / 인어 / 곤충 다양한 아이돌 종족 메이킹이 가능해요.</p>
+            </div>
+            <div class="row">
+              <p class="h">업그레이드 하는 즐거움</p>
+              <p class="d">내가 원하는 스타일링이 가능해요. 음원 제작도 가능합니다. 대화하면서 갈굴 수도 있어요!</p>
+            </div>
+            <div class="row">
+              <p class="h">멀티 인터렉션</p>
+              <p class="d">내가 결성한 그룹의 인원과 다함께 영상 통화가 가능해요. 함께 스토리를 쌓아가며 변화되는 그들의 모습을 확인해보세요.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 LOGO -->
+      <section class="section" id="logo" style="display:flex;flex-direction:column;gap:40px;align-items:flex-end;">
+        <div style="display:flex;gap:4px;align-items:center;width:100%;padding-bottom:40px;" class="sec-title">
+          <span class="num">05</span><span class="name">logo</span>
+        </div>
+        <div class="logo-img"><img src="assets/logo-grid.svg" alt="LUKI2DS logo grid"></div>
+      </section>
+
+      <!-- 04 COLOR -->
+      <section class="section" id="color">
+        <div class="sec-head" style="gap:32px;padding-bottom:40px;">
+          <h2 class="sec-title"><span class="num">04</span><span class="name">color</span></h2>
+          <div class="sec-body">
+            <p class="body-text">톡톡튀는 비비드 컬러 팔레트를 준비했습니다! 이세계, 우주인을 만난다는 컨셉이기 때문에 우주적인 느낌을 원했습니다. 신비롭고 깜짝 놀랄 비밀이 숨겨져있을 것같은 그런 것이요.</p>
+          </div>
+        </div>
+        <div class="palette">
+          <div class="group">
+            <h3 class="sub-title">Primary pallete</h3>
+            <div class="swatches">
+              <div class="swatch"><div class="chip" style="background:#d7d72f;"></div><div class="meta"><span>Blue Tint </span><span>Hex: #B6C9CF</span></div></div>
+              <div class="swatch"><div class="chip" style="background:#ec3f20;"></div><div class="meta"><span>Baby Blue</span><span>Hex: #88E2FF</span></div></div>
+              <div class="swatch"><div class="chip" style="background:#537ba5;"></div><div class="meta"><span>Orange </span><span>Hex: #FA9819</span></div></div>
+              <div class="swatch"><div class="chip" style="background:#fff;border:1px solid #040404;"></div><div class="meta"><span>White </span><span>Hex: #000000</span></div></div>
+            </div>
+          </div>
+          <div class="group">
+            <h3 class="sub-title">Neutral pallete</h3>
+            <div class="swatches">
+              <div class="swatch"><div class="chip" style="background:#626262;"></div><div class="meta"><span>Deep Orange </span><span>Hex: #CD4900</span></div></div>
+              <div class="swatch"><div class="chip" style="background:#040404;"></div><div class="meta"><span>Black </span><span>Hex: #000000</span></div></div>
+              <div class="swatch"><div class="chip" style="background:#a3a3a3;"></div><div class="meta"><span>Dark Grey</span><span>Hex: #A3A3A3</span></div></div>
+              <div class="swatch"><div class="chip" style="background:#e5e5e5;"></div><div class="meta"><span>Grey</span><span>Hex: #E5E5E5</span></div></div>
+            </div>
+          </div>
+          <div class="group">
+            <h3 class="sub-title">Gradient pallete</h3>
+            <div class="gradients">
+              <div class="grad-row">
+                <div class="grad"><img src="assets/gradient1.png" alt=""><span class="cap">Gradient 1</span></div>
+                <div class="grad"><img src="assets/gradient2.png" alt=""><span class="cap">Gradient 2</span></div>
+              </div>
+              <div class="grad-row">
+                <div class="grad"><img src="assets/gradient3.png" alt=""><span class="cap">Gradient 3</span></div>
+                <div class="grad"><img src="assets/gradient4.png" alt=""><span class="cap">Gradient 4</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 TYPO -->
+      <section class="section typo" id="typo" style="display:flex;flex-direction:column;gap:40px;align-items:center;">
+        <div class="sec-head" style="width:100%;padding-bottom:40px;">
+          <h2 class="sec-title"><span class="num">03</span><span class="name">typo</span></h2>
+          <div class="sec-body typo-text">
+            <p class="body-text">타이포그래피는 고민중이에요. 로고를 아스키 코드 느낌으로 갔기 때문에 UI의 중요한 정보는 직접 제작한 타이포로 작성해볼 생각이에요. 일단 고민하고 있습니다.</p>
+          </div>
+        </div>
+        <div class="glyphs">
+          <div class="glyph-row">
+            <div class="glyph-cell"><div class="glyph-inner"><img src="assets/glyph0.png" alt=""><div class="lab"><span>w·0</span><span>0</span></div></div></div>
+            <div class="glyph-cell"><div class="glyph-inner"><img src="assets/glyph1.png" alt=""><div class="lab"><span>w·1</span><span>1</span></div></div></div>
+            <div class="glyph-cell"><div class="glyph-inner"><img src="assets/glyph2.png" alt=""><div class="lab"><span>w·2</span><span>2</span></div></div></div>
+            <div class="glyph-cell"><div class="glyph-inner"><img src="assets/glyph3.png" alt=""><div class="lab"><span>w·3</span><span>3</span></div></div></div>
+            <div class="glyph-cell"><div class="glyph-inner"><img src="assets/glyph4.png" alt=""><div class="lab"><span>w·4</span><span>4</span></div></div></div>
+          </div>
+          <div class="glyph-row">
+            <div class="glyph-cell"><div class="glyph-inner"><img src="assets/glyph5.png" alt=""><div class="lab"><span>w·5</span><span>5</span></div></div></div>
+            <div class="glyph-cell"><div class="glyph-inner"><img src="assets/glyph6.png" alt=""><div class="lab"><span>w·6</span><span>6</span></div></div></div>
+            <div class="glyph-cell"><div class="glyph-inner"><img src="assets/glyph7.png" alt=""><div class="lab"><span>w·7</span><span>7</span></div></div></div>
+            <div class="glyph-cell"><div class="glyph-inner"><img src="assets/glyph8.png" alt=""><div class="lab"><span>w·8</span><span>8</span></div></div></div>
+            <div class="glyph-cell"><div class="glyph-inner"><img src="assets/glyph9.png" alt=""><div class="lab"><span>w·9</span><span>9</span></div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 APPLICATION -->
+      <section class="section" id="application" style="display:flex;flex-direction:column;gap:40px;align-items:flex-end;">
+        <div class="sec-title" style="width:100%;padding-bottom:40px;">
+          <span class="num">06</span><span class="name">application</span>
+        </div>
+        <div class="watch-stage">
+          <div class="belt-mask">
+            <div class="watch-belt">
+              <div class="wface"><img src="assets/watch1.png" alt=""></div><div class="wface"><img src="assets/watch3.png" alt=""></div><div class="wface"><img src="assets/watch-face-center.png" alt=""></div><div class="wface"><img src="assets/watch2.png" alt=""></div><div class="wface"><img src="assets/watch4.png" alt=""></div>
+              <div class="wface"><img src="assets/watch1.png" alt=""></div><div class="wface"><img src="assets/watch3.png" alt=""></div><div class="wface"><img src="assets/watch-face-center.png" alt=""></div><div class="wface"><img src="assets/watch2.png" alt=""></div><div class="wface"><img src="assets/watch4.png" alt=""></div>
+              <div class="wface"><img src="assets/watch1.png" alt=""></div><div class="wface"><img src="assets/watch3.png" alt=""></div><div class="wface"><img src="assets/watch-face-center.png" alt=""></div><div class="wface"><img src="assets/watch2.png" alt=""></div><div class="wface"><img src="assets/watch4.png" alt=""></div>
+            </div>
+          </div>
+          <div class="watch-device"><img src="assets/watch-device.svg" alt="Apple Watch"></div>
+        </div>
+      </section>
+
+      <!-- 07 SERVICE -->
+      <section class="section service" id="service" style="display:flex;flex-direction:column;gap:40px;align-items:center;">
+        <div class="sec-title" style="width:100%;padding-bottom:40px;">
+          <span class="num">07</span><span class="name">service</span>
+        </div>
+        <div class="service-row" id="serviceRow">
+          <div class="ui"><img src="assets/ui1.png" alt=""></div>
+          <div class="ui"><img src="assets/ui2.png" alt=""></div>
+          <div class="ui"><img src="assets/ui3.png" alt=""></div>
+          <div class="ui"><img src="assets/ui4.png" alt=""></div>
+          <div class="ui"><img src="assets/ui1.png" alt=""></div>
+          <div class="ui"><img src="assets/ui2.png" alt=""></div>
+          <div class="ui"><img src="assets/ui3.png" alt=""></div>
+          <div class="ui"><img src="assets/ui4.png" alt=""></div>
+          <div class="ui"><img src="assets/ui1.png" alt=""></div>
+          <div class="ui"><img src="assets/ui2.png" alt=""></div>
+          <div class="ui"><img src="assets/ui3.png" alt=""></div>
+          <div class="ui"><img src="assets/ui4.png" alt=""></div>
+        </div>
+      </section>
+
+      <!-- 08 PLAN -->
+      <section class="section" id="plan" style="display:flex;flex-direction:column;gap:40px;align-items:flex-end;">
+        <div class="sec-title" style="width:100%;padding-bottom:40px;">
+          <span class="num">08</span><span class="name">plan</span>
+        </div>
+        <div class="plan-wrap">
+          <div class="plan-months">
+            <div class="m">6월</div>
+            <div class="m">7월</div>
+            <div class="m">8월</div>
+            <div class="m">9월</div>
+            <div class="m">10월</div>
+          </div>
+          <div class="rm-bars">
+            <div class="rm-bar" style="left: 0px; top: 0px;">서비스 기획/서비스명 확정/uxui설계/화면 고도화</div>
+            <div class="rm-bar" style="left: 24.95%; top: 52px;">주요 기능 안정화</div>
+            <div class="rm-bar" style="left: 32.09%; top: 104px;">이벤트 페이지 제작</div>
+            <div class="rm-bar" style="left: 38.1%; top: 156px;">파이프라인 연동(이미지/스크립트/tts/영상)</div>
+            <div class="rm-bar" style="left: 59.11%; top: 208px;">서비스 안정화 및 디자인 시스템<br>마무리</div>
+            <div class="rm-bar" style="right: 0; top: 284px; text-align: right;">qa, 전시 /시연 관련 제작 dp 관련 구매 및 셋업 점검</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="footer-top">
+          <h2>luki2ds</h2>
+          <div class="footer-links">
+            <a href="#">Contact</a>
+            <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to the top</button>
+          </div>
+        </div>
+        <div class="footer-legal">
+          <div class="left"><span>© LUKI2DS</span><span>전제이</span></div>
+          <div>All Rights Reserved</div>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+  <script>
+    // 스크롤 리빌: 섹션이 뷰포트에 들어오면 부드럽게 떠오름
+    (function(){
+      var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      var targets=document.querySelectorAll('.main .summary, .main .section, .main .footer');
+      if(!targets.length) return;
+      document.body.classList.add('has-reveal');
+      targets.forEach(function(el){ el.classList.add('reveal'); });
+      if(reduce || !('IntersectionObserver' in window)){
+        targets.forEach(function(el){ el.classList.add('in'); }); return;
+      }
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+      },{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+      targets.forEach(function(el){ io.observe(el); });
+    })();
+
+    // service: 무한 루프 캐러셀 (한 세트 너비만큼 점프 → 중복이라 티 안 남, 빈 슬롯 없음)
+    (function(){
+      var row=document.getElementById('serviceRow');
+      if(!row) return;
+      var setW=function(){return row.scrollWidth/3;};
+      window.addEventListener('load',function(){row.scrollLeft=setW();});
+      row.scrollLeft=setW();
+      // 스크롤이 멈춘 뒤에만 한 세트 너비로 점프 → 스크롤 중 흔들림 없음
+      var tid;
+      row.addEventListener('scroll',function(){
+        clearTimeout(tid);
+        tid=setTimeout(function(){
+          var w=setW();
+          if(row.scrollLeft < w*0.5){ row.scrollLeft += w; }
+          else if(row.scrollLeft > w*1.5){ row.scrollLeft -= w; }
+        },140);
+      },{passive:true});
+    })();
+
+    // demo: 얼굴 토글 + 타이핑 애니메이션
+    (function(){
+      var pill=document.getElementById('demoPill');
+      var p=document.querySelector('.demo-text');
+      var typed=document.getElementById('demoTyped');
+      if(!pill||!p||!typed) return;
+      var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      var full=p.getAttribute('data-text');
+      if(reduce){ typed.textContent=full; return; }
+      // 얼굴 왔다갔다
+      var faces=['\\^_^/','~*ㅁ*~'], fi=0;
+      setInterval(function(){ fi=(fi+1)%faces.length; pill.textContent=faces[fi]; },600);
+      // 타이핑 루프 (입력 → 멈춤 → 지움 → 반복)
+      var i=0, started=false;
+      function type(){ typed.textContent=full.slice(0,i); i++; if(i<=full.length){ setTimeout(type,120); } else { setTimeout(erase,2600); } }
+      function erase(){ typed.textContent=full.slice(0,i); i--; if(i>=0){ setTimeout(erase,22); } else { i=0; setTimeout(type,500); } }
+      if('IntersectionObserver' in window){
+        var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting&&!started){ started=true; type(); io.disconnect(); } }); },{threshold:0.3});
+        io.observe(p);
+      } else { type(); }
+    })();
+  </script>
+</body>
+</html>
