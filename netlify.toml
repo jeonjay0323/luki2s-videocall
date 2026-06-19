@@ -1,0 +1,5 @@
+# Netlify 배포 설정
+# 브랜드북(site/)을 정적 사이트로 서빙한다.
+# (bot.py / web 라이브 영상통화는 서버가 필요해 Netlify엔 안 올라감)
+[build]
+  publish = "site"
